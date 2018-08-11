@@ -96,6 +96,21 @@ body {
 }
 
 .pressKey {
+    font-size: 36px;
+}
+
+.pressedKey {
     font-size: 24px;
 }
 
+.hide {
+    width: 100% !important;
+}
+
+.redText {
+    color: red;
+}
+
+.blackText {
+    color: black;
+}
