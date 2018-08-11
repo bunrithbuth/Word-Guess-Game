@@ -57,7 +57,7 @@ const gameHangman = {
             if(alphabet.indexOf(kPress) > -1){
                 $('.pressKey').addClass('blackText')
                 $('.pressKey').removeClass('redText')
-                document.querySelector('.pressKey').innerHTML = kPress
+                $('.pressKey').html(kPress)
                 // add it to keys already pressed
                 this.keysPressedAlready.push(kPress)
                 document.querySelector('.pressedKey').innerHTML = this.keysPressedAlready
@@ -68,7 +68,7 @@ const gameHangman = {
                     let tempWord = this.word
                     while(tempWord.indexOf(kPress) !== -1){
                         let classString = '.slot' + tempWord.indexOf(kPress) + ' > .bar'
-                        document.querySelector(classString).innerHTML = kPress
+                        $(classString).html(kPress)
                         tempWord = setCharAt(tempWord, tempWord.indexOf(kPress), '1')
                         ++this.score
                     }
@@ -77,7 +77,7 @@ const gameHangman = {
                     }
                 }else{
                     --this.guessAmount
-                    document.querySelector('.numGuess').innerHTML = this.guessAmount
+                    $('.numGuess').html(this.guessAmount)
                 }
                 if(this.guessAmount === 0){
                     setTimeout(() => alert('You Lose'), 100);
@@ -85,14 +85,14 @@ const gameHangman = {
             }else{ // not a letter
                 $('.pressKey').addClass('redText')
                 $('.pressKey').removeClass('blackText')
-                document.querySelector('.pressKey').innerHTML = kPress + ' is not a valid letter!';
+                $('.pressKey').html(Press + ' is not a valid letter!')
             }
         }else if(this.keysPressedAlready.indexOf(kPress) > -1){
             // key is already in keyPressed
             console.log('2')
             $('.pressKey').addClass('redText')
             $('.pressKey').removeClass('blackText')
-            document.querySelector('.pressKey').innerHTML = kPress + ' is already Pressed letter!';
+            $('.pressKey').html(kPress + ' is already Pressed letter!')
         }
     }
 }
