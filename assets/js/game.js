@@ -1,4 +1,3 @@
-
 const wordHangmanChoices = [
     'CALL OF DUTY', 'WARCRAFT', 'SONIC', 'MARIO', 'POKEMON', 'TETRIS', 'BOMBERMAN', 'MINECRAFT', 'OVERWATCH'
 ]
@@ -10,7 +9,7 @@ const wordHangmanChoices = [
 */
 const gameHangman = {
     word: 'none',
-    guessAmount: 8,
+    guessAmount: 6,
     keyPress: '1',
     keysPressedAlready: [],
     wordArray: [],
@@ -45,10 +44,13 @@ const gameHangman = {
     },
     disableButton: function(kPress){
         //disable the letter/button
-        $('.'+kPress).addClass('disabled')
+        $(`.${kPress}`).addClass('disabled')
     },
-    updateHangman: function(){
+    updateHangmanImage: function(){
         //updates the hangman image per incorrect guess using guessAmount
+        let offset = 'assets/images/Hangman-' + (6 - this.guessAmount) + '.png'
+        console.log(offset)
+        $('.hangmanImage').attr('src',offset)
     },
     gameUpdate: function(kPress){
         // checking to see if we havent pressed yet
@@ -73,11 +75,12 @@ const gameHangman = {
                         ++this.score
                     }
                     if(this.score === this.wordArray.length-this.countSpaces){
-                        setTimeout(() => alert('You Win. The word is ' + this.word), 100);
+                        setTimeout(() => alert(`You Win. The word is ${this.word}`), 100);
                     }
                 }else{
                     --this.guessAmount
                     $('.numGuess').html(this.guessAmount)
+                    this.updateHangmanImage()
                 }
                 if(this.guessAmount === 0){
                     setTimeout(() => alert('You Lose'), 100);
@@ -85,14 +88,13 @@ const gameHangman = {
             }else{ // not a letter
                 $('.pressKey').addClass('redText')
                 $('.pressKey').removeClass('blackText')
-                $('.pressKey').html(Press + ' is not a valid letter!')
+                $('.pressKey').html(`${kPress} is not a valid letter!`)
             }
         }else if(this.keysPressedAlready.indexOf(kPress) > -1){
             // key is already in keyPressed
-            console.log('2')
             $('.pressKey').addClass('redText')
             $('.pressKey').removeClass('blackText')
-            $('.pressKey').html(kPress + ' is already Pressed letter!')
+            $('.pressKey').html(`${kPress} is already Pressed letter!`)
         }
     }
 }
@@ -100,11 +102,16 @@ const gameHangman = {
 
 $(document).ready(function() {
     gameHangman.init()
+
     document.onkeyup = function (event) {
         let keyPress = event.key
-        console.log(keyPress)
         gameHangman.gameUpdate(keyPress.toUpperCase())
     }
+
+    let btn = '.btn-large'
+    $(btn).on("click", function( event ) {
+        gameHangman.gameUpdate($( this ).text())
+    })
     
 })
 
