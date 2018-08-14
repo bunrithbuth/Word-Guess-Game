@@ -62,7 +62,7 @@ const gameHangman = {
                 $('.pressKey').html(kPress)
                 // add it to keys already pressed
                 this.keysPressedAlready.push(kPress)
-                document.querySelector('.pressedKey').innerHTML = this.keysPressedAlready
+                $('.pressedKey').html(this.keysPressedAlready)
                 //disable the letter
                 this.disableButton(kPress)
                 // if its a letter in hangmanword, we display it on the gui
