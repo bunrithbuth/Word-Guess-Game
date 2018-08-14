@@ -1,0 +1,116 @@
+body {
+    min-height: 100vh;
+}
+
+.gameTitleSection{
+    position: relative;
+    height: 120px;
+}
+.gameTitle {    
+    font-family: 'Delius Unicase', cursive;
+    font-size: 50px;
+    font-weight: 700;    
+    top: 20px;
+    left: 40%;
+    text-align: center;  
+    position: absolute;            
+  }
+
+.gameSubTitle {
+    font-family: 'Just Me Again Down Here', cursive;
+    font-size: 24px;
+    top: 70px;
+    left: 40%;
+    position: absolute;
+  }
+
+.buttonRow {
+    margin-bottom: 5px;
+}
+
+.btn-large {
+  min-width: 72px;
+ }
+
+ .headerTitle {
+     /* height: 300px; */
+ }
+ .alphabetBox {
+    position: relative;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 10px;
+ }
+
+ .alphabetBoxHeader {
+     padding-top: 5px;
+     padding-bottom: 10px;
+     color: #919191;
+ }
+
+ .footer {
+    bottom: 0px;
+    margin-bottom: 0px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    background-color: #E5E5E5;
+ }
+
+ .hangmanScreen {
+     background-color: whitesmoke;
+     -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding-bottom: 10px !important;
+ }
+
+ .hangmanScreen h6, .numGuess {
+     padding: 0px;
+     margin: 0px;
+     font-family: 'Delius Unicase', cursive;
+ }
+
+ .numGuess {
+     font-size: 48px;
+     padding-top: 20px;
+     padding-bottom: 20px;
+ }
+
+ .colReset {
+     margin: 0px !important;
+     padding: 0px !important;
+ }
+
+ .bar {
+    width: 80%;
+    height: 60px;
+    border-bottom: 1px solid black;
+    overflow: hidden;
+    font-size: 48px;
+    font-family: 'Delius Unicase', cursive;
+}
+
+.pressTitle {
+    font-size: 24px;
+    padding-top: 20px !important;
+}
+
+.pressKey {
+    font-size: 36px;
+}
+
+.pressedKey {
+    font-size: 24px;
+}
+
+.hide {
+    width: 100% !important;
+}
+
+.redText {
+    color: red;
+}
+
+.blackText {
+    color: black;
+}

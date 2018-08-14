@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Just+Me+Again+Down+Here|Delius+Unicase" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <!-- Import assets/css/style.css -->
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Word Guess Game</title>
+</head>
+<body>
+    <div class="center gameTitleSection">
+        <div class="gameTitle">
+            Hangman!
+        </div>
+        <div class="gameSubTitle">
+            Gamers Edition!! A Game Not for Gamers!
+        </div>
+    </div>
+    <div class="row rowBG">
+        <div class="col m2">
+            <!-- we are just hiding this -->
+        </div>
+        <div class="col m6 center">
+            <!-- hangman letter space -->
+            <div class='col m1 colReset show slot0'>
+                <div class="bar"></div>
+            </div>
+            <div class='col m1 colReset show slot1'>
+                <div class="bar"></div>
+            </div>
+            <div class='col m1 colReset show slot2'>
+                <div class="bar"></div>
+            </div>
+            <div class='col m1 colReset show slot3'>
+                <div class="bar"></div>
+            </div>
+            <div class='col m1 colReset show slot4'>
+                <div class="bar"></div>
+            </div>
+            <div class='col m1 colReset show slot5'>
+                <div class="bar"></div>
+            </div>
+            <div class='col m1 colReset show slot6'>
+                <div class="bar"></div>
+            </div>
+            <div class='col m1 colReset show slot7'>
+                <div class="bar"></div>
+            </div>
+            <div class='col m1 colReset show slot8'>
+                <div class="bar"></div>
+            </div>
+            <div class='col m1 colReset show slot9'>
+                <div class="bar"></div>
+            </div>
+            <div class='col m1 colReset show slot10'>
+                <div class="bar"></div>
+            </div>
+            <div class='col m1 colReset show slot11'>
+                <div class="bar"></div>
+            </div>
+            
+            <!-- user input -->
+            <div class='col m12 pressTitle'>
+                You Pressed:
+            </div>
+            <div class='col m12 pressKey blackText'>
+                &lt;Press a Key&gt;
+            </div>
+            <div class='col m12 pressTitle'>
+                    Keys Already Pressed:
+            </div>
+            <div class='col m12 pressedKey'>
+                [ ]
+            </div>
+        </div>
+        <div class="col m4">
+            <!-- hangman screen -->
+            <div class="col m9 hangmanScreen center">
+                <!-- hangman screen -->
+                <div class="col m12">
+                    <img class="hangmanImage" src="assets/images/Hangman-0.png" style="width: 100%">
+                </div>
+                <div class="col m12">
+                    <h6> Number of Incorrect Guesses Remaining: <h6>
+                    <div class="numGuess">8</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer row">
+        <div class="col m12 alphabetBox">
+                <div class="col m12 center alphabetBoxHeader">
+                    <!-- box header -->
+                    Press a Letter or Keystroke on YOUR Keyboard!
+                </div>
+                <div class="col m12 center buttonRow">
+                    <!-- button row 1 -->
+                    <div class="waves-effect waves-light amber btn-large A">A</div>
+                    <div class="waves-effect waves-light btn-large B">B</div>
+                    <div class="waves-effect waves-light btn-large C">C</div>
+                    <div class="waves-effect waves-light btn-large D">D</div>
+                    <div class="waves-effect waves-light amber btn-large E">E</div>
+                    <div class="waves-effect waves-light btn-large F">F</div>
+                    <div class="waves-effect waves-light btn-large G">G</div>
+                    <div class="waves-effect waves-light btn-large H">H</div>
+                    <div class="waves-effect waves-light amber btn-large I">I</div>
+                </div>
+                <div class="col m12 center buttonRow">
+                    <!-- button row 2 -->
+                    <div class="waves-effect waves-light btn-large J">J</div>
+                    <div class="waves-effect waves-light btn-large K">K</div>
+                    <div class="waves-effect waves-light btn-large L">L</div>
+                    <div class="waves-effect waves-light btn-large M">M</div>
+                    <div class="waves-effect waves-light btn-large N">N</div>
+                    <div class="waves-effect waves-light amber btn-large O">O</div>
+                    <div class="waves-effect waves-light btn-large P">P</div>
+                    <div class="waves-effect waves-light btn-large Q">Q</div>
+                    <div class="waves-effect waves-light btn-large R">R</div>
+                </div>
+                <div class="col m12 center buttonRow">
+                    <div class="waves-effect waves-light btn-large S">S</div>
+                    <div class="waves-effect waves-light btn-large T">T</div>
+                    <div class="waves-effect waves-light amber btn-large U">U</div>
+                    <div class="waves-effect waves-light btn-large V">V</div>
+                    <div class="waves-effect waves-light btn-large W">W</div>
+                    <div class="waves-effect waves-light btn-large X">X</div>
+                    <div class="waves-effect waves-light btn-large Y">Y</div>
+                    <div class="waves-effect waves-light btn-large Z">Z</div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Import Google Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Import assets/js/javascript.js-->
+    <script src="assets/js/game.js"></script>
+    <!-- Import Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+</body>
+</html>
