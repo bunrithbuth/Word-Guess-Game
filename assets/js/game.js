@@ -15,6 +15,7 @@ const gameHangman = {
     wordArray: [],
     score: 0,
     countSpaces: 0,
+    win: false,
     init: function(){
         this.chooseWord()
         this.hideSlots()
@@ -53,48 +54,55 @@ const gameHangman = {
         $('.hangmanImage').attr('src',offset)
     },
     gameUpdate: function(kPress){
-        // checking to see if we havent pressed yet
-        if(this.keysPressedAlready.indexOf(kPress) === -1){
-            //then we want to add it to keysPressedAlready if letter, o.w. its not a letter
-            if(alphabet.indexOf(kPress) > -1){
-                $('.pressKey').addClass('blackText')
-                $('.pressKey').removeClass('redText')
-                $('.pressKey').html(kPress)
-                // add it to keys already pressed
-                this.keysPressedAlready.push(kPress)
-                $('.pressedKey').html(this.keysPressedAlready)
-                //disable the letter
-                this.disableButton(kPress)
-                // if its a letter in hangmanword, we display it on the gui
-                if(this.wordArray.indexOf(kPress) > -1){
-                    let tempWord = this.word
-                    while(tempWord.indexOf(kPress) !== -1){
-                        let classString = '.slot' + tempWord.indexOf(kPress) + ' > .bar'
-                        $(classString).html(kPress)
-                        tempWord = setCharAt(tempWord, tempWord.indexOf(kPress), '1')
-                        ++this.score
+        // win/lose condition
+        if(this.guessAmount !== 0 && this.win !== true){
+            // checking to see if we havent pressed yet
+            if(this.keysPressedAlready.indexOf(kPress) === -1){
+                //then we want to add it to keysPressedAlready if letter, o.w. its not a letter
+                if(alphabet.indexOf(kPress) > -1){
+                    $('.pressKey').addClass('blackText')
+                    $('.pressKey').removeClass('redText')
+                    $('.pressKey').html(kPress)
+                    // add it to keys already pressed
+                    this.keysPressedAlready.push(kPress)
+                    $('.pressedKey').html(this.keysPressedAlready)
+                    //disable the letter
+                    this.disableButton(kPress)
+                    // if its a letter in hangmanword, we display it on the gui
+                    if(this.wordArray.indexOf(kPress) > -1){
+                        let tempWord = this.word
+                        while(tempWord.indexOf(kPress) !== -1){
+                            let classString = '.slot' + tempWord.indexOf(kPress) + ' > .bar'
+                            $(classString).html(kPress)
+                            tempWord = setCharAt(tempWord, tempWord.indexOf(kPress), '1')
+                            ++this.score
+                        }
+                        if(this.score === this.wordArray.length-this.countSpaces){
+                            setTimeout(() => alert(`You Win. The word is ${this.word}`), 100);
+                            this.win = true
+                            console.log(this.win)
+                        }
+                    }else{
+                        --this.guessAmount
+                        $('.numGuess').html(this.guessAmount)
+                        this.updateHangmanImage()
                     }
-                    if(this.score === this.wordArray.length-this.countSpaces){
-                        setTimeout(() => alert(`You Win. The word is ${this.word}`), 100);
+                    if(this.guessAmount === 0){
+                        setTimeout(() => alert('You Lose'), 100);
                     }
-                }else{
-                    --this.guessAmount
-                    $('.numGuess').html(this.guessAmount)
-                    this.updateHangmanImage()
+                }else{ // not a letter
+                    $('.pressKey').addClass('redText')
+                    $('.pressKey').removeClass('blackText')
+                    $('.pressKey').html(`${kPress} is not a valid letter!`)
                 }
-                if(this.guessAmount === 0){
-                    setTimeout(() => alert('You Lose'), 100);
-                }
-            }else{ // not a letter
+            }else if(this.keysPressedAlready.indexOf(kPress) > -1){
+                // key is already in keyPressed
                 $('.pressKey').addClass('redText')
                 $('.pressKey').removeClass('blackText')
-                $('.pressKey').html(`${kPress} is not a valid letter!`)
+                $('.pressKey').html(`${kPress} is already Pressed letter!`)
             }
-        }else if(this.keysPressedAlready.indexOf(kPress) > -1){
-            // key is already in keyPressed
-            $('.pressKey').addClass('redText')
-            $('.pressKey').removeClass('blackText')
-            $('.pressKey').html(`${kPress} is already Pressed letter!`)
+        }else{
+            setTimeout(() => alert('Please Refresh to Play Again'), 100);
         }
     }
 }
